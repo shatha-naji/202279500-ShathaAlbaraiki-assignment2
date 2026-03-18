@@ -1,34 +1,59 @@
 # AI Usage Report
-AI Usage Report
-1. Tools Used & Use Cases
-ChatGPT/ Gemini
+## Tools Used
+The following AI tools were used during development:
+- ChatGPT
+- Gemini
 
-Improve initial HTML structure for the portfolio.
-Helped fix image path issues (relative & absolute paths).
-Assisted in writing project descriptions.
-Suggested responsive CSS improvements.
-Helped implement JavaScript features (theme toggle, greeting, popup message).
+## How AI Was Used
+AI was used as a support tool during both Assignment 1 and Assignment 2. Its role was to help generate ideas, debug code, improve writing, and suggest better implementation approaches.
 
-2. Benefits & Challenges
-Benefits:
-Faster development process.
-Clear explanations of errors and solutions.
-Helped improve wording and documentation quality.
+### Assignment 1 Support
+AI assistance was used to:
+- improve the initial HTML structure of the portfolio
+- debug image path issues
+- improve project descriptions
+- suggest responsive CSS layout improvements
+- help implement JavaScript features such as greeting text and theme logic
 
-Challenges:
-Some generated code required adjustments.
-Needed to understand relative file paths to fix image display issues.
+### Assignment 2 Support
+AI assistance was used to:
+- fix the dark mode toggle so it works correctly
+- replace inline `onclick` handlers with `addEventListener`
+- add project filtering functionality
+- improve form validation and error messages
+- suggest hover, transition, and fade-in effects
+- improve README and technical documentation structure
 
-3. Learning Outcomes
+## Benefits
+Using AI helped:
+- speed up problem-solving
+- provide alternative implementation ideas
+- improve the clarity of documentation
+- identify code quality issues such as mixing HTML and JavaScript behavior
 
-Better understanding of HTML structure and semantic sections.
-Learned how relative file paths work.
-Improved knowledge of responsive design using Flexbox and Grid.
-Understood how to use JavaScript for DOM manipulation.
-Learned how to store theme preference using localStorage.
+## Challenges
+Some AI-generated suggestions required manual correction or adjustment. For example:
+- validation logic needed testing before it worked correctly
+- generated text needed editing to better match my own project and writing style
+- some code suggestions had to be simplified to fit the assignment requirements
 
-4. Responsible Use & Modifications
+## Manual Review and Modifications
+All AI-generated suggestions were reviewed, edited, and tested before being used. I manually:
+- updated project content and descriptions
+- corrected validation behavior
+- tested theme persistence with `localStorage`
+- verified filtering behavior and empty states
+- adjusted documentation wording and formatting
 
-All AI-generated suggestions were reviewed and modified before implementation.
-Code was tested locally to ensure correctness.
-Text content was personalized and edited to maintain originality and academic integrity.
+## Learning Outcomes
+Through this process, I improved my understanding of:
+- semantic HTML structure
+- relative file paths
+- responsive design using Flexbox and Grid
+- DOM manipulation with JavaScript
+- event handling with `addEventListener`
+- saving user preferences with `localStorage`
+- form validation and user feedback design
+
+## Responsible Use
+AI was used as a learning and support tool, not as a replacement for understanding. All submitted work was reviewed, modified, and tested by me to maintain originality and academic integrity.

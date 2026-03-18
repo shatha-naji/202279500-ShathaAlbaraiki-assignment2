@@ -1,30 +1,30 @@
 # 202279500-ShathaAlbaraiki-assignment1
-Shatha Albaraiki – Personal Portfolio
+# Shatha Albaraiki - Personal Portfolio - Assignment 2
 
-1. Project Description
+## Project Description
+This project is an interactive personal portfolio website developed for Assignment 2. It builds on Assignment 1 by improving the user experience with JavaScript-based interactivity, dynamic content, validation, theme persistence, and smoother visual effects.
 
-This project is a responsive personal portfolio website developed as part of Assignment 1.
-It showcases my background, projects, skills, and contact information using HTML, CSS, and JavaScript.
-The website focuses on clean design, responsive layout, and simple interactivity.
+The website presents my background, projects, skills, and contact information in a responsive and modern layout.
 
-2. Features
+## Features
+- Responsive design for desktop and mobile devices
+- Dark/light theme toggle with saved preference using `localStorage`
+- Dynamic greeting based on time of day
+- Project filtering by category
+- Contact form validation with clear success and error messages
+- Project availability feedback message
+- Empty state message when no projects match a filter
+- Hover effects and fade-in animations
+- Mobile navigation menu
 
-*Responsive design (desktop, tablet, mobile)
-*Dark/Light theme toggle
-*Dynamic greeting based on time of day
-*Project showcase section
-*Contact form (frontend only, no backend)
-*Skills section
-*Clean folder structure and organized code
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+- GitHub
 
-3. Technologies Used
+## Project Structure
 
-*HTML
-*CSS
-*JavaScript
-*GitHub
-
-4. Project Structure
 ├── README.md
 ├── index.html
 ├── css/
@@ -36,45 +36,40 @@ The website focuses on clean design, responsive layout, and simple interactivity
 ├── docs/
 │   ├── ai-usage-report.md
 │   └── technical-documentation.md
-└── .gitignore
+└── .gitignore.mhjl
 
-5. How to Run Locally
+## How to Run Locally
 
-1-Clone the repository:
-git clone https://github.com/shatha-naji/202279500-ShathaAlbaraiki-assignment1.git
+Clone the repository:
 
-2-Open the folder in VS Code.
+git clone https://github.com/shatha-naji/202279500-ShathaAlbaraiki-assignment2.git
 
-3-Right-click index.html and select: Open with Live Server
-   OR simply open index.html in your browser.
+Open the project folder in VS Code.
 
-6. AI Usage Summary
+Open index.html using Live Server or open it directly in your browser.
 
-*AI tools (ChatGPT/ Gemini) were used to:
--Improve initial layout structure
--Debug image path issues
--Improve project descriptions
--Suggest responsive design improvements
+## AI Usage Summary
 
+AI tools such as ChatGPT and Gemini were used to assist with:
+improving HTML structure and section wording
 
-7. A detailed report is available in:
+debugging theme and validation logic
 
+replacing inline event handlers with addEventListener
+
+improving responsive design and user feedback
+
+strengthening technical and AI usage documentation
+
+A more detailed explanation is available in:
 docs/ai-usage-report.md
 
-8. Responsive Design
+## Live Demo
 
-The website adapts to different screen sizes using:
-.CSS Grid
-.Flexbox
-Media queries at 720px breakpoint
 
-9. Live Demo
-
-https://shatha-naji.github.io/202279500-ShathaAlbaraiki-assignment1/
-
-10. Author
+## Author
 
 Shatha Albaraiki
-Software Engineering Student – KFUPM
+Software Engineering Student - KFUPM
 202279500
 

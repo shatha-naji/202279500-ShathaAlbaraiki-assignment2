@@ -10,96 +10,145 @@
   <header class="header">
     <nav class="nav">
       <a class="logo" href="#top">Shatha Albaraiki</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" type="button">
+        ☰
+      </button>
+
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="theme-btn" id="themeBtn" type="button">🌙</button>
+
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
+        🌙
+      </button>
     </nav>
   </header>
 
   <main id="top" class="container">
-    <section class="hero">
+    <section class="hero fade-in">
       <p id="greeting" class="greeting"></p>
       <h1>Hey, It's <span class="accent">Shatha Albaraiki</span>!</h1>
-      <p class="tagline">Shatha or (Shosho) is actually what I preferred. I'm 21 years old. </p>
+      <p class="tagline">
+        Shatha, or Shosho, is what I prefer. I'm a 21-year-old Software Engineering student
+        interested in front-end development, UI design, and building user-friendly digital experiences.
+      </p>
       <a class="primary-btn" href="#projects">View Projects</a>
     </section>
 
-    <section id="about" class="section">
+    <section id="about" class="section fade-in">
       <h2>About Me</h2>
       <div class="about-grid">
         <img class="profile" src="assets/images/about-pic.jpg" alt="Photo of Shatha Albaraiki" />
         <p>
-          I'm a junior Software Engineering student at KFUPM. I'm interested in front-end web development and UI design. I like Modern Decorative / Folk-Inspired and Contemporary Illustrative Art. My favorite hobby is walking it's me time.
+          I'm a junior Software Engineering student at KFUPM. I'm interested in front-end web development
+          and UI design. I enjoy modern decorative, folk-inspired, and contemporary illustrative art.
+          One of my favorite hobbies is walking because it gives me quiet time to relax and think.
         </p>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section fade-in">
       <h2>Projects</h2>
-      <div class="cards">
-        <article class="card">
-          <img src="assets/images/tutor-link.png" alt="Project 1 placeholder" />
-          <h3>Project One</h3>
-          <p>‘Tutor link’ is a software platform designed to connect/link students with qualified tutors. 
-            This software project is aiming to enhance students’
-            learning experience by providing professional tutors for each course.
-            The main services are seamless registration processes for both learners and tutors, 
-            options for filtering and searching for courses and reachable feedback system.
-            User-friendly interface, flexible services, along with the maintainability of the system is the goal we are aiming for having a high quality platform.</p>
-            <a class="secondary-btn" href="#" onclick="showNotAvailable(event)">
-                View Project
-            </a>
+      <p class="section-note">
+        Use the buttons below to filter projects by category.
+      </p>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" type="button" data-filter="all">All</button>
+        <button class="filter-btn" type="button" data-filter="web">Web</button>
+        <button class="filter-btn" type="button" data-filter="react">React</button>
+        <button class="filter-btn" type="button" data-filter="ui">UI/UX</button>
+      </div>
+
+      <p id="projectFeedback" class="project-feedback" aria-live="polite"></p>
+
+      <div class="cards" id="projectCards">
+        <article class="card project-card" data-category="web ui">
+          <img src="assets/images/tutor-link.png" alt="Tutor Link project preview" />
+          <span class="project-tag">Web / UI</span>
+          <h3>Tutor Link</h3>
+          <p>
+            Tutor Link is a software platform designed to connect students with qualified tutors.
+            It supports registration for learners and tutors, course searching and filtering,
+            and a feedback system to improve the learning experience.
+          </p>
+          <a class="secondary-btn project-link" href="#">View Project</a>
         </article>
 
-        <article class="card">
-          <img src="assets/images/food delivery app logo(1).jpg" alt="Project 2 placeholder" />
-          <h3>Project Two</h3>
-          <p>Delivery Application (Personal Project):
-            Designed and developed a React-based delivery service application focused on delivering a smooth and user-friendly experience.
-            The application features intuitive navigation, responsive interface design, and structured workflows to simplify the ordering process.
-             It allows users to browse products, add items to a cart, and manage orders efficiently. Emphasis was placed on clean UI components,
-              reusable code structure, and responsive layouts to ensure compatibility across desktop and mobile devices. This project strengthened my understanding of React fundamentals,
-               component-based architecture, state management, and front-end design principles.</p>
-            <a class="secondary-btn" href="#" onclick="showNotAvailable(event)">
-                View Project
-            </a>
+        <article class="card project-card" data-category="web react ui">
+          <img src="assets/images/food delivery app logo(1).jpg" alt="Delivery app project preview" />
+          <span class="project-tag">React / Web</span>
+          <h3>Delivery Application</h3>
+          <p>
+            A React-based delivery service application focused on a smooth and user-friendly experience.
+            Users can browse products, add items to a cart, and manage orders through a responsive interface.
+          </p>
+          <a class="secondary-btn project-link" href="#">View Project</a>
         </article>
       </div>
+
+      <p id="emptyState" class="empty-state" hidden>No projects found in this category.</p>
     </section>
 
-    <section id="skills" class="section">
-        <h2>Skills</h2>
-        <ul>
-            <li>Programming Languages (Java, Python, C, VB.NET) </li>
-            <li>Web Development (HTML, CSS, JavaScript, Flutter) </li>
-            <li>Software & Development Tools (Visual Studio, R Studio, MATLAB, AutoCAD, Figma)</li>
-            <li> Frameworks (React, JavaFX) </li>
-            <li> Version Control (Git/GitHub)</li>
-        </ul>
+    <section id="skills" class="section fade-in">
+      <h2>Skills</h2>
+      <p class="section-note">
+        These are some of the tools and technologies I use in my coursework and projects.
+      </p>
+      <ul>
+        <li>Programming Languages (Java, Python, C, VB.NET)</li>
+        <li>Web Development (HTML, CSS, JavaScript, Flutter)</li>
+        <li>Software & Development Tools (Visual Studio, R Studio, MATLAB, AutoCAD, Figma)</li>
+        <li>Frameworks (React, JavaFX)</li>
+        <li>Version Control (Git/GitHub)</li>
+      </ul>
     </section>
 
+    <section id="music" class="section fade-in">
+      <h2>Music Explorer</h2>
+      <p class="section-note">
+        Search for a song or artist and discover music recommendations.
+      </p>
+      
+      <div class="music-controls">
+        <input
+        type="text"
+        id="musicSearch"
+        placeholder="Enter artist or song name"
+        aria-label="Search for music"
+        />
+        <button class="primary-btn" id="musicBtn" type="button">Search Music</button>
+      </div>
+      
+      <p id="musicStatus" class="music-status" aria-live="polite"></p>
+      
+      <div id="musicResults" class="music-results"></div>
+    </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section fade-in">
       <h2>Contact</h2>
-      <form class="form" id="contactForm">
+      <p class="section-note">
+        Fill in the form below. All fields are required.
+      </p>
+
+      <form class="form" id="contactForm" novalidate>
         <label>
           Name
-          <input type="text" name="name" placeholder="Your name" required />
+          <input type="text" id="name" name="name" placeholder="Your name" />
         </label>
 
         <label>
           Email
-          <input type="email" name="email" placeholder="you@example.com" required />
+          <input type="email" id="email" name="email" placeholder="you@example.com" />
         </label>
 
         <label>
           Message
-          <textarea name="message" rows="5" placeholder="Write your message..." required></textarea>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message..."></textarea>
         </label>
 
         <button class="primary-btn" type="submit">Send</button>
