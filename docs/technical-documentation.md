@@ -46,7 +46,7 @@ Dark mode is controlled through JavaScript by toggling the `dark` class on the `
 
 The selected theme is saved using `localStorage`, which allows the website to remember the user's preference after refresh or reopening the page.
 
-### Logic
+### 6. Logic
 1. Check whether a saved theme exists in `localStorage`
 2. If the saved value is `dark`, apply the `dark` class to the page
 3. When the theme button is clicked, toggle the class
@@ -54,7 +54,7 @@ The selected theme is saved using `localStorage`, which allows the website to re
 
 This improves user experience by preserving settings across visits.
 
-## 6. Dynamic Content: Project Filtering
+## 7. Dynamic Content: Project Filtering
 The projects section includes filter buttons such as:
 - All
 - Web
@@ -63,7 +63,7 @@ The projects section includes filter buttons such as:
 
 Each project card has a `data-category` attribute. JavaScript reads this attribute and compares it with the selected filter.
 
-### Filtering process
+### 8. Filtering process
 1. Detect which filter button the user clicked
 2. Remove the `active` class from all buttons
 3. Add `active` to the selected button
@@ -74,31 +74,43 @@ Each project card has a `data-category` attribute. JavaScript reads this attribu
 
 This feature makes the page more interactive and helps the user focus on relevant content.
 
-## 7. Event Handling
-All interactive behavior is implemented in `script.js` using `addEventListener`.
+## 9. API feature 
+Music Explorer 
 
-This is better than inline HTML event handlers because it:
-- separates structure from behavior
-- improves maintainability
-- makes the code easier to expand and debug
-- follows cleaner front-end development practice
+A Music Explorer feature was added using the iTunes Search API.
 
-Examples include:
-- clicking the theme button
-- toggling the mobile menu
-- filtering projects
-- showing project feedback
-- submitting the contact form
+How it works:
+1. The user enters a song or artist name
+2. A request is sent to the iTunes API using fetch()
+3. The API returns song data in JSON format
+4. The results are displayed dynamically as music cards
 
-## 8. Contact Form Validation
-The contact form uses JavaScript validation to improve feedback before submission.
+User Feedback:
+- "Loading..." message while fetching data
+- Error message if request fails
+- Message if no results are found
 
-The validation checks:
-- whether all fields are filled in
-- whether the email is in a valid format
-- whether the message is at least 10 characters long
+This feature demonstrates dynamic content and external data handling.
 
-### Validation flow
+## 10. Event Handling
+
+All interactions are implemented using addEventListener instead of inline HTML event handlers.
+
+This improves:
+- code organization
+- maintainability
+- separation of structure and behavior
+
+## 11. Form Validation
+
+The contact form includes custom JavaScript validation:
+- checks for empty fields
+- validates email format using regex
+- ensures message length is sufficient
+
+Clear error and success messages are displayed to guide the user.
+
+### 12. Validation flow
 1. Prevent default form submission
 2. Read and trim field values
 3. Remove previous status classes
@@ -109,7 +121,7 @@ The validation checks:
 
 This approach provides clear and immediate feedback to the user.
 
-## 9. User Experience Improvements
+## 13. User Experience Improvements
 Several interface improvements were added to support usability:
 - section guidance text
 - empty-state feedback when filters show no matches
@@ -120,7 +132,7 @@ Several interface improvements were added to support usability:
 
 These improvements make the page easier to understand and more pleasant to use.
 
-## 10. Responsive Design
+## 14. Responsive Design
 The site is responsive and adapts to smaller screens using:
 - Flexbox for navigation and skills
 - CSS Grid for layout sections
@@ -132,13 +144,13 @@ On smaller screens:
 - project cards stack into one column
 - the about section becomes a single-column layout
 
-## 11. Limitations
+## 15. Limitations
 Current limitations include:
 - the contact form does not send data to a real backend service
 - project demo links are placeholders
 - the fade-in animation runs on page load only, not on scroll
 
-## 12. Future Improvements
+## 16. Future Improvements
 Possible future enhancements include:
 - connecting the form to a backend or email service
 - adding real project demo links

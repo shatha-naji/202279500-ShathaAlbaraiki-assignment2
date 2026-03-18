@@ -13,10 +13,11 @@ The website presents my background, projects, skills, and contact information in
 - Project filtering by category
 - Contact form validation with clear success and error messages
 - Project availability feedback message
+- Music Explorer using iTunes API
 - Empty state message when no projects match a filter
 - Hover effects and fade-in animations
 - Mobile navigation menu
-
+- Fetches music data dynamically from the iTunes public API
 ## Technologies Used
 - HTML
 - CSS
