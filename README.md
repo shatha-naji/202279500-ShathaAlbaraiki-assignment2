@@ -66,7 +66,7 @@ A more detailed explanation is available in:
 docs/ai-usage-report.md
 
 ## Live Demo
-
+https://shatha-naji.github.io/202279500-ShathaAlbaraiki-assignment2/
 
 ## Author
 
