@@ -1,23 +1,49 @@
-# 202279500-ShathaAlbaraiki-assignment2
-# Shatha Albaraiki - Personal Portfolio - Assignment 2
+# 202279500-ShathaAlbaraiki-assignment3
+# Shatha Albaraiki - Personal Portfolio - Assignment 3
 
 ## Project Description
-This project is an interactive personal portfolio website developed for Assignment 2. It builds on Assignment 1 by improving the user experience with JavaScript-based interactivity, dynamic content, validation, theme persistence, and smoother visual effects.
+This project is an advanced version of my personal portfolio website developed for Assignment 3. It builds on Assignments 1 and 2 by adding more complex functionality, improved interactivity, state management, and external API integration.
 
-The website presents my background, projects, skills, and contact information in a responsive and modern layout.
+The website presents my background, projects, skills, and contact information in a responsive and dynamic layout.
 
 ## Features
+
+### Core Features
 - Responsive design for desktop and mobile devices
 - Dark/light theme toggle with saved preference using `localStorage`
 - Dynamic greeting based on time of day
+
+### Advanced Functionality
 - Project filtering by category
-- Contact form validation with clear success and error messages
-- Project availability feedback message
-- Music Explorer using iTunes API
-- Empty state message when no projects match a filter
-- Hover effects and fade-in animations
+- Project sorting (A–Z, Z–A, newest, oldest)
+- Saved filter and sorting preferences using `localStorage`
+- Visitor name storage and personalized welcome message
+- Timer showing how long a visitor has been on the site
+
+### API Integration
+- Music Explorer using the iTunes Search API
+- Fetches real-time music data dynamically
+- Displays results with user-friendly messages
+- Handles loading, empty results, and errors
+
+### Form Validation
+- Checks for empty fields
+- Validates email format
+- Ensures message length requirements
+- Displays clear success and error messages
+
+### User Experience
+- Empty state feedback when no projects match filters
+- Hover effects and smooth transitions
 - Mobile navigation menu
-- Fetches music data dynamically from the iTunes public API
+- Fade-in animations for sections
+
+### Performance Improvements
+- Lazy loading for images (`loading="lazy"`)
+- Organized and reusable CSS/JavaScript
+- Reduced unnecessary code and improved structure
+
+
 ## Technologies Used
 - HTML
 - CSS
@@ -25,52 +51,47 @@ The website presents my background, projects, skills, and contact information in
 - GitHub
 
 ## Project Structure
-
 ├── README.md
 ├── index.html
 ├── css/
-│   └── styles.css
+│ └── styles.css
 ├── js/
-│   └── script.js
+│ └── script.js
 ├── assets/
-│   └── images/
+│ └── images/
 ├── docs/
-│   ├── ai-usage-report.md
-│   └── technical-documentation.md
-└── .gitignore.mhjl
+│ ├── ai-usage-report.md
+│ └── technical-documentation.md
+└── .gitignore
 
 ## How to Run Locally
 
 Clone the repository:
-
-git clone https://github.com/shatha-naji/202279500-ShathaAlbaraiki-assignment2.git
+git clone 
 
 Open the project folder in VS Code.
 
-Open index.html using Live Server or open it directly in your browser.
+Run using:
+- Live Server extension, OR
+- Open `index.html` directly in your browser
 
 ## AI Usage Summary
 
 AI tools such as ChatGPT and Gemini were used to assist with:
-improving HTML structure and section wording
 
-debugging theme and validation logic
+- Implementing project sorting and filtering logic  
+- Debugging layout and alignment issues  
+- Improving JavaScript logic (localStorage, timer, validation)  
+- Enhancing UI/UX design and responsiveness  
+- Supporting documentation writing and structure  
 
-replacing inline event handlers with addEventListener
-
-improving responsive design and user feedback
-
-strengthening technical and AI usage documentation
-
-A more detailed explanation is available in:
+A detailed explanation is available in:
 docs/ai-usage-report.md
 
 ## Live Demo
-https://shatha-naji.github.io/202279500-ShathaAlbaraiki-assignment2/
+https://your-link-here
 
 ## Author
-
-Shatha Albaraiki
-Software Engineering Student - KFUPM
+Shatha Albaraiki  
+Software Engineering Student - KFUPM  
 202279500
-

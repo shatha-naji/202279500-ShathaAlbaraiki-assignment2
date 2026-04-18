@@ -1,11 +1,14 @@
 # AI Usage Report
+
 ## Tools Used
 The following AI tools were used during development:
 - ChatGPT
 - Gemini
 
+
 ## How AI Was Used
-AI was used as a support tool during both Assignment 1 and Assignment 2. Its role was to help generate ideas, debug code, improve writing, and suggest better implementation approaches.
+
+AI was used as a support tool across Assignments 1, 2, and 3 to assist with problem-solving, debugging, improving code quality, and enhancing documentation.
 
 ### Assignment 1 Support
 AI assistance was used to:
@@ -24,36 +27,53 @@ AI assistance was used to:
 - suggest hover, transition, and fade-in effects
 - improve README and technical documentation structure
 
+### Assignment 3 Support
+AI assistance was used to:
+- debug and improve `localStorage` usage for saving filter and sorting state
+- implement visitor name storage and personalized messages
+- add and debug a timer showing time spent on the website
+- improve layout alignment and styling (e.g., positioning the visitor card and hero content)
+- improve error handling and user feedback in the API feature
+- enhance performance suggestions such as lazy loading images
+- update README and documentation to reflect advanced functionality
+
+
 ## Benefits
 Using AI helped:
 - speed up problem-solving
 - provide alternative implementation ideas
 - improve the clarity of documentation
-- identify code quality issues such as mixing HTML and JavaScript behavior
+- assist in debugging more complex JavaScript logic
+- improve UI/UX design decisions
+
 
 ## Challenges
 Some AI-generated suggestions required manual correction or adjustment. For example:
-- validation logic needed testing before it worked correctly
-- generated text needed editing to better match my own project and writing style
-- some code suggestions had to be simplified to fit the assignment requirements
+- sorting logic needed testing to ensure correct ordering
+- `localStorage` behavior required debugging to persist state correctly
+- layout suggestions needed adjustment to match the desired design
+- generated text needed editing to match my writing style
+- some code suggestions had to be simplified to fit assignment requirements
+
 
 ## Manual Review and Modifications
 All AI-generated suggestions were reviewed, edited, and tested before being used. I manually:
-- updated project content and descriptions
-- corrected validation behavior
-- tested theme persistence with `localStorage`
-- verified filtering behavior and empty states
-- adjusted documentation wording and formatting
+- verified sorting and filtering logic step-by-step
+- tested `localStorage` persistence for theme, visitor name, and project preferences
+- adjusted layout and styling to match my design preferences
+- ensured validation and API responses worked correctly
+- edited and refined all documentation content
+
 
 ## Learning Outcomes
 Through this process, I improved my understanding of:
-- semantic HTML structure
-- relative file paths
-- responsive design using Flexbox and Grid
-- DOM manipulation with JavaScript
-- event handling with `addEventListener`
-- saving user preferences with `localStorage`
-- form validation and user feedback design
+- advanced DOM manipulation and event handling
+- using `localStorage` for state management
+- implementing sorting and filtering logic together
+- working with external APIs using `fetch`
+- handling asynchronous operations and errors
+- improving performance and user experience
+- structuring and documenting a complete web project
 
 ## Responsible Use
-AI was used as a learning and support tool, not as a replacement for understanding. All submitted work was reviewed, modified, and tested by me to maintain originality and academic integrity.
+AI was used as a learning and support tool, not as a replacement for understanding. All AI-generated content was reviewed, modified, and tested to ensure correctness, originality, and alignment with assignment requirements.

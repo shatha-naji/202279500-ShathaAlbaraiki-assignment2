@@ -7,10 +7,22 @@ const contactForm = document.getElementById("contactForm");
 const formMsg = document.getElementById("formMsg");
 
 const filterButtons = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
+const projectCards = Array.from(document.querySelectorAll(".project-card"));
+const projectCardsContainer = document.getElementById("projectCards");
 const emptyState = document.getElementById("emptyState");
 const projectFeedback = document.getElementById("projectFeedback");
 const projectLinks = document.querySelectorAll(".project-link");
+const sortProjects = document.getElementById("sortProjects");
+
+const musicBtn = document.getElementById("musicBtn");
+const musicSearch = document.getElementById("musicSearch");
+const musicStatus = document.getElementById("musicStatus");
+const musicResults = document.getElementById("musicResults");
+
+const visitorNameInput = document.getElementById("visitorName");
+const saveNameBtn = document.getElementById("saveNameBtn");
+const visitorMessage = document.getElementById("visitorMessage");
+const timeOnSite = document.getElementById("timeOnSite");
 
 // Footer year
 yearEl.textContent = new Date().getFullYear();
@@ -18,6 +30,7 @@ yearEl.textContent = new Date().getFullYear();
 // Greeting by time of day
 const hour = new Date().getHours();
 let greeting = "Hello!";
+
 if (hour < 12) {
   greeting = "Good morning 👋";
 } else if (hour < 18) {
@@ -25,10 +38,12 @@ if (hour < 12) {
 } else {
   greeting = "Good evening 👋";
 }
+
 greetingEl.textContent = greeting;
 
-// Load saved theme
+// Theme state
 const savedTheme = localStorage.getItem("theme");
+
 if (savedTheme === "dark") {
   document.body.classList.add("dark");
   themeBtn.textContent = "☀️";
@@ -36,7 +51,6 @@ if (savedTheme === "dark") {
   themeBtn.textContent = "🌙";
 }
 
-// Working theme toggle
 themeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 
@@ -45,57 +59,136 @@ themeBtn.addEventListener("click", () => {
   themeBtn.textContent = isDarkMode ? "☀️" : "🌙";
 });
 
-// Mobile menu toggle
+// Mobile menu
 menuBtn.addEventListener("click", () => {
   navLinks.classList.toggle("open");
 });
 
-// Close mobile menu after clicking a link
 navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("open");
   });
 });
 
-// Project links without inline onclick
+// Project links
 projectLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
-    projectFeedback.textContent = "This project demo is not available yet, but the project description is included above.";
+    projectFeedback.textContent =
+      "This project demo is not available yet, but the project description is included above.";
   });
 });
 
-// Project filter
+// Visitor name state
+function loadVisitorName() {
+  const savedName = localStorage.getItem("visitorName");
+
+  visitorMessage.classList.remove("success", "error");
+
+  if (savedName) {
+    visitorMessage.textContent = `Welcome back, ${savedName}!`;
+    visitorNameInput.value = savedName;
+    visitorMessage.classList.add("success");
+  } else {
+    visitorMessage.textContent = "Save your name to personalize your visit.";
+  }
+}
+
+saveNameBtn.addEventListener("click", () => {
+  const name = visitorNameInput.value.trim();
+
+  visitorMessage.classList.remove("success", "error");
+
+  if (name.length < 2) {
+    visitorMessage.textContent = "Please enter a name with at least 2 characters.";
+    visitorMessage.classList.add("error");
+    return;
+  }
+
+  localStorage.setItem("visitorName", name);
+  visitorMessage.textContent = `Nice to meet you, ${name}! Your name has been saved.`;
+  visitorMessage.classList.add("success");
+});
+
+// Project filtering + sorting + saved state
+let currentFilter = localStorage.getItem("projectFilter") || "all";
+let currentSort = localStorage.getItem("projectSort") || "default";
+
+function sortCards(cards, sortValue) {
+  const sortedCards = [...cards];
+
+  if (sortValue === "az") {
+    sortedCards.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
+  } else if (sortValue === "za") {
+    sortedCards.sort((a, b) => b.dataset.title.localeCompare(a.dataset.title));
+  } else if (sortValue === "newest") {
+    sortedCards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+  } else if (sortValue === "oldest") {
+    sortedCards.sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
+  }
+
+  return sortedCards;
+}
+
+function updateProjects() {
+  let visibleCards = projectCards.filter((card) => {
+    const categories = card.dataset.category;
+    return currentFilter === "all" || categories.includes(currentFilter);
+  });
+
+  visibleCards = sortCards(visibleCards, currentSort);
+
+  projectCards.forEach((card) => card.classList.add("hidden"));
+
+  visibleCards.forEach((card) => {
+    card.classList.remove("hidden");
+    projectCardsContainer.appendChild(card);
+  });
+
+  emptyState.hidden = visibleCards.length !== 0;
+
+  let feedbackText = "";
+
+  if (currentFilter === "all") {
+    feedbackText = "Showing all projects";
+  } else {
+    feedbackText = `Showing ${currentFilter.toUpperCase()} projects`;
+  }
+
+  if (currentSort !== "default") {
+    feedbackText += ` sorted by ${sortProjects.options[sortProjects.selectedIndex].text}.`;
+  } else {
+    feedbackText += ".";
+  }
+
+  projectFeedback.textContent = feedbackText;
+
+  localStorage.setItem("projectFilter", currentFilter);
+  localStorage.setItem("projectSort", currentSort);
+}
+
 filterButtons.forEach((button) => {
+  if (button.dataset.filter === currentFilter) {
+    button.classList.add("active");
+  } else {
+    button.classList.remove("active");
+  }
+
   button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-    let visibleCount = 0;
+    currentFilter = button.dataset.filter;
 
     filterButtons.forEach((btn) => btn.classList.remove("active"));
     button.classList.add("active");
 
-    projectCards.forEach((card) => {
-      const categories = card.dataset.category;
-
-      if (filter === "all" || categories.includes(filter)) {
-        card.classList.remove("hidden");
-        visibleCount++;
-      } else {
-        card.classList.add("hidden");
-      }
-    });
-
-    if (visibleCount === 0) {
-      emptyState.hidden = false;
-    } else {
-      emptyState.hidden = true;
-    }
-
-    projectFeedback.textContent =
-      filter === "all"
-        ? "Showing all projects."
-        : `Showing ${filter.toUpperCase()} projects.`;
+    updateProjects();
   });
+});
+
+sortProjects.value = currentSort;
+
+sortProjects.addEventListener("change", () => {
+  currentSort = sortProjects.value;
+  updateProjects();
 });
 
 // Contact form validation
@@ -114,7 +207,14 @@ contactForm.addEventListener("submit", (event) => {
     return;
   }
 
+  if (name.length < 2) {
+    formMsg.textContent = "Your name should be at least 2 characters long.";
+    formMsg.classList.add("error");
+    return;
+  }
+
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   if (!emailPattern.test(email)) {
     formMsg.textContent = "Please enter a valid email address.";
     formMsg.classList.add("error");
@@ -127,21 +227,25 @@ contactForm.addEventListener("submit", (event) => {
     return;
   }
 
+  if (message.length > 300) {
+    formMsg.textContent = "Your message should not be more than 300 characters.";
+    formMsg.classList.add("error");
+    return;
+  }
+
   formMsg.textContent = `Thank you, ${name}! Your message has been validated successfully.`;
   formMsg.classList.add("success");
   contactForm.reset();
 });
-const musicBtn = document.getElementById("musicBtn");
-const musicSearch = document.getElementById("musicSearch");
-const musicStatus = document.getElementById("musicStatus");
-const musicResults = document.getElementById("musicResults");
 
+// iTunes API
 musicBtn.addEventListener("click", fetchMusic);
 
 async function fetchMusic() {
   const query = musicSearch.value.trim();
 
   musicResults.innerHTML = "";
+  musicStatus.classList.remove("error", "success");
 
   if (query === "") {
     musicStatus.textContent = "Please enter a song title or artist name.";
@@ -149,7 +253,6 @@ async function fetchMusic() {
     return;
   }
 
-  musicStatus.classList.remove("error", "success");
   musicStatus.textContent = "Loading music recommendations...";
 
   try {
@@ -192,3 +295,19 @@ async function fetchMusic() {
     musicStatus.classList.add("error");
   }
 }
+
+// Timer
+let secondsOnSite = 0;
+
+function updateTimer() {
+  secondsOnSite++;
+  const minutes = Math.floor(secondsOnSite / 60);
+  const seconds = secondsOnSite % 60;
+  timeOnSite.textContent = `Time on site: ${minutes} minute(s) and ${seconds} second(s)`;
+}
+
+setInterval(updateTimer, 1000);
+
+// Initialize page state
+loadVisitorName();
+updateProjects();

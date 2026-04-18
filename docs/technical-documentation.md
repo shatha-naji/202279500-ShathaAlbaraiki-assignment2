@@ -1,13 +1,17 @@
 # Technical Documentation
+
 ## 1. Overview
-This project is a responsive portfolio website built with HTML, CSS, and JavaScript. Assignment 2 extends the original Assignment 1 version by adding more interactivity, better user feedback, and improved code quality.
+This project is a responsive portfolio website built with HTML, CSS, and JavaScript. Assignment 3 extends the previous versions by adding advanced functionality, external API integration, state management, and improved performance.
 
 The main improvements include:
-- a working dark/light theme toggle with persistence
-- project filtering by category
-- form validation with custom messages
-- improved animations and transitions
-- removal of inline event handlers in favor of JavaScript event listeners
+- dark/light theme toggle with persistence
+- project filtering and sorting
+- contact form validation with enhanced checks
+- integration with an external API (iTunes)
+- visitor name storage using localStorage
+- timer showing time spent on the site
+- improved animations and user feedback
+
 
 ## 2. Project Structure
 The project follows an organized structure:
@@ -18,6 +22,7 @@ The project follows an organized structure:
 - `assets/images/` stores project and profile images
 - `docs/` stores technical and AI usage documentation
 
+
 ## 3. HTML Structure
 The page is divided into the following main sections:
 - Header and navigation
@@ -25,134 +30,170 @@ The page is divided into the following main sections:
 - About section
 - Projects section
 - Skills section
+- Music Explorer section
+- Interactive Features section
 - Contact section
 - Footer
 
-Semantic sectioning improves readability and makes the page easier to maintain.
+Semantic sectioning improves readability and maintainability.
 
 ## 4. CSS Design Approach
-The styling uses CSS custom properties (`:root`) to define reusable theme variables such as background, text, border, and accent colors. This makes theme switching easier because the site does not need separate stylesheets for dark and light mode.
+The styling uses CSS custom properties (`:root`) to define reusable theme variables such as background, text, border, and accent colors.
 
-Example variables include:
+Example variables:
 - `--bg`
 - `--text`
 - `--accent`
 - `--border`
 
-When the `dark` class is added to the `body`, these variables change to dark theme values.
+When the `dark` class is added to the `body`, these values change dynamically.
+
 
 ## 5. Dark Mode and localStorage
-Dark mode is controlled through JavaScript by toggling the `dark` class on the `body` element.
+Dark mode is implemented by toggling a `dark` class on the `<body>` element.
 
-The selected theme is saved using `localStorage`, which allows the website to remember the user's preference after refresh or reopening the page.
+### Logic:
+1. Check if a theme is stored in `localStorage`
+2. Apply the saved theme
+3. Toggle theme on button click
+4. Save the updated preference
 
-### 6. Logic
-1. Check whether a saved theme exists in `localStorage`
-2. If the saved value is `dark`, apply the `dark` class to the page
-3. When the theme button is clicked, toggle the class
-4. Save the updated preference back into `localStorage`
 
-This improves user experience by preserving settings across visits.
-
-## 7. Dynamic Content: Project Filtering
-The projects section includes filter buttons such as:
+## 6. Dynamic Content: Project Filtering
+Users can filter projects by category:
 - All
 - Web
 - React
 - UI/UX
 
-Each project card has a `data-category` attribute. JavaScript reads this attribute and compares it with the selected filter.
+Each project card includes a `data-category` attribute.
 
-### 8. Filtering process
-1. Detect which filter button the user clicked
-2. Remove the `active` class from all buttons
-3. Add `active` to the selected button
-4. Loop through all project cards
-5. Show cards whose categories match the selected filter
-6. Hide unmatched cards using the `.hidden` class
-7. Show an empty-state message if no projects match
-
-This feature makes the page more interactive and helps the user focus on relevant content.
-
-## 9. API feature 
-Music Explorer
-
-A Music Explorer feature was added using the iTunes Search API.
-
-How it works:
-1. The user enters a song or artist name
-2. A request is sent to the iTunes API using fetch()
-3. The API returns song data in JSON format
-4. The results are displayed dynamically as music cards
-
-User Feedback:
-- "Loading..." message while fetching data
-- Error message if request fails
-- Message if no results are found
-
-This feature demonstrates dynamic content and external data handling.
-
-## 10. Event Handling
-
-All interactions are implemented using addEventListener instead of inline HTML event handlers.
-
-This improves:
-- code organization
-- maintainability
-- separation of structure and behavior
-
-## 11. Form Validation
-
-The contact form includes custom JavaScript validation:
-- checks for empty fields
-- validates email format using regex
-- ensures message length is sufficient
-
-Clear error and success messages are displayed to guide the user.
-
-### 12. Validation flow
-1. Prevent default form submission
-2. Read and trim field values
-3. Remove previous status classes
-4. Validate empty fields
-5. Validate email with a regular expression
-6. Validate minimum message length
-7. Display either an error message or a success message
-
-This approach provides clear and immediate feedback to the user.
-
-## 13. User Experience Improvements
-Several interface improvements were added to support usability:
-- section guidance text
-- empty-state feedback when filters show no matches
-- message when project demos are unavailable
-- hover effects on cards and buttons
-- fade-in animation for sections
-- smooth transitions for theme changes and interactive elements
-
-These improvements make the page easier to understand and more pleasant to use.
-
-## 14. Responsive Design
-The site is responsive and adapts to smaller screens using:
-- Flexbox for navigation and skills
-- CSS Grid for layout sections
-- a media query at `max-width: 720px`
-
-On smaller screens:
-- the menu button appears
-- navigation links collapse into a toggle menu
-- project cards stack into one column
-- the about section becomes a single-column layout
-
-## 15. Limitations
-Current limitations include:
-- the contact form does not send data to a real backend service
-- project demo links are placeholders
+### Filtering process:
+1. Detect clicked filter
+2. Update active button state
+3. Loop through cards
+4. Show matching cards
+5. Hide non-matching cards
+6. Display empty-state message if needed
 
 
-## 16. Future Improvements
-Possible future enhancements include:
-- connecting the form to a backend or email service
-- adding real project demo links
-- adding live project search
-- improving accessibility with more keyboard and screen-reader support
+## 7. Project Sorting
+Projects can also be sorted using a dropdown menu.
+
+Sorting options:
+- A–Z
+- Z–A
+- Newest
+- Oldest
+
+### Sorting process:
+1. Read selected sort option
+2. Extract data attributes (title/date)
+3. Sort project array
+4. Re-render sorted cards
+
+
+## 8. State Management
+The application uses `localStorage` to preserve user preferences.
+
+Stored values:
+- theme (dark/light)
+- visitor name
+- selected filter
+- selected sorting option
+
+### Flow:
+1. Load stored values on page load
+2. Apply them to UI
+3. Update storage when user interacts
+
+
+## 9. Visitor Personalization
+Users can enter their name to personalize the experience.
+
+### Behavior:
+- Name is saved in `localStorage`
+- A welcome message is displayed
+- The value persists after refresh
+
+
+## 10. Timer Feature
+A timer tracks how long a user stays on the site.
+
+### Logic:
+1. Initialize a counter
+2. Increase every second using `setInterval`
+3. Display minutes and seconds
+4. Update in real time
+
+
+## 11. API Feature – Music Explorer
+The Music Explorer uses the iTunes Search API.
+
+### How it works:
+1. User enters a search query
+2. Fetch request is sent to API
+3. Results returned in JSON format
+4. Display music cards dynamically
+
+### User feedback:
+- Loading message
+- Error message
+- No-results message
+
+
+## 12. Event Handling
+All interactions use `addEventListener` instead of inline HTML events.
+
+Benefits:
+- better structure
+- easier maintenance
+- separation of concerns
+
+
+## 13. Form Validation
+The contact form includes custom validation:
+
+- required fields
+- email format validation
+- minimum and maximum message length
+
+### Validation flow:
+1. Prevent default submission
+2. Read and trim inputs
+3. Validate inputs step-by-step
+4. Show error or success message
+
+
+## 14. User Experience Improvements
+Enhancements include:
+- clear feedback messages
+- hover effects and transitions
+- fade-in animations
+- empty-state handling
+- smooth theme switching
+
+
+## 15. Responsive Design
+The site adapts to smaller screens using:
+- Flexbox
+- CSS Grid
+- media queries (`max-width: 720px`)
+
+## 16. Performance Improvements
+Optimizations include:
+- lazy loading images (`loading="lazy"`)
+- clean and reusable CSS/JS
+- minimized unnecessary code
+- efficient DOM updates
+
+## 17. Limitations
+- Contact form does not connect to a backend
+- Project links are placeholders
+
+## 18. Future Improvements
+Possible enhancements:
+- connect form to backend/email service
+- add real project demos
+- implement search functionality
+- improve accessibility features
